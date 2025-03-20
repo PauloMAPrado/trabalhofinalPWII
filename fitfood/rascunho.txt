@@ -1,0 +1,42 @@
+Site: Receitas Fitness (FitFood)
+Usuários: Comum, Padrão, Assinante, Devs, Nutricionistas
+Cores: Verde, vermelho e branco (Somente tema claro)
+Acesso:  
+	- Comum: Usuário sem login e sem acesso às funções básicas
+	- Padrão: Usuário com login e acesso às ferramentas básicas (Salvar, Avaliar, etc)
+	- Assinante: Usuário com login e pagamento realizados, acesso ao acompanhamento personalizado
+	- Nutricionistas: Profissionais formados com CRN válido
+
+Fluxo Base (Usuário sem login):
+- Acesso as receitas
+- Acesso aos comentários
+
+Fluxo Base (Usuário com login):
+- Cadastro de Usuário
+- Login
+- Acesso a receitas, comentários e perfis
+- Pode salvar, favoritar e comentar uma receita
+- Editar seu próprio perfil
+
+Fluxo Base (Usuário assinante):
+- Acesso ao chat com nutricionistas profissionais
+
+Fluxo Base (Usuário Nutricionista):
+- Publicar receitas
+
+Requisitos:
+	Cadastro:
+	- Nome
+	- Data Nascimento
+	- Email
+	- Telefone
+	- Senha
+
+	Login:
+	- Email
+	- Senha
+
+	Receita:
+	- Nome
+	- Detalhes (Tempo de preparo, proções, quantidade, informações nutricionais, classificação(Emagressimento, Ganho de Massa ou Refeição Livre))
+	- Passo-a-passo
