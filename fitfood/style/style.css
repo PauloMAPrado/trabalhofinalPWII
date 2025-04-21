@@ -1,14 +1,26 @@
+/* Zerando Configurações */
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Configurações Gerais */
+
 body{
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f4;
+    font-size: 16px;
     color: #333;
+    line-height: 1.5;
+    background-image: url(../img/bkg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+
+/* Login */
 
 .loginBox{
     width: 400px;
@@ -49,8 +61,13 @@ input[type="password"]{
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease;
     margin: 15px 0;
+}
+
+.btn:hover{
+    background: #4cae4c;
+    transition: background 0.3s ease;
+
 }
 
 a{
@@ -61,5 +78,106 @@ a{
 }
 
 a:hover{
-    text-decoration: underline;
+    color: #45a045;
+    transition: 0.5s ease;
+    scale: 1.03;
+}
+
+/* Cadastro */
+
+.cadastroBox{
+    width: 700px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    border: 1px solid #ccc;
+}   
+
+.cadastroTitle{
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[type="password"]{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus{
+    border-color: #5cb85c;
+    outline: none;
+}
+
+.btn{
+    width: 100% !important;
+    background: #5cb85c !important;
+    border: none !important;
+    padding: 10px !important;
+    font-size: 16px !important;
+    color: #fff !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    margin: 15px 0 !important;
+}
+
+.btn:hover{
+    background: #4cae4c !important;
+    transition: background 0.3s ease !important;
+}
+
+a{
+    text-decoration: none !important;
+    color: #5cb85c !important;
+    margin: 10px 0 !important;
+    display: inline-block !important;
+}
+
+a:hover{
+    color: #45a045 !important;
+    transition: 0.5s ease !important;
+    scale: 1.03 !important;
+}
+
+.especialidade{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+}
+
+select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+}
+
+select:focus{
+    border-color: #5cb85c;
+    outline: none;
 }

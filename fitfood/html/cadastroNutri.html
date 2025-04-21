@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="shortcut icon" href="../img/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../bootstrap-5.3.5-dist/css/bootstrap.min.css">
+    <title>FitFood | Cadastro</title>
+</head>
+<body id="cadastro">
+    <div class="cadastroBox">
+        <h1 class="cadastroTitle">Cadastro | Nutricionista</h1>
+        <form action="#" method="POST">
+            <div class="row">
+                <div class="col">
+                    <div class="textbox">
+                        <input type="text" placeholder="Nome" name="nome" required>
+                    </div>
+                    <div class="textbox">
+                        <input type="number" placeholder="CRN" name="crn" required>
+                    </div>
+                    <div class="textbox">
+                        <input type="number" placeholder="Telefone" name="fone" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="textbox">
+                        <input type="email" placeholder="Email" name="email" required>
+                    </div>
+                    <div class="textbox">
+                        <input type="text" placeholder="Endereço" name="endereco" required>
+                    </div>
+                    <div class="textbox">
+                        <input type="password" placeholder="Senha" name="senha" required>
+                    </div>
+                </div>
+                <div class="especialidade">
+
+                    <select name="Especialidade" id="especialidade" aria-placeholder="Selecione sua especialidade" required>
+                        <option value="" disabled selected>Selecione sua especialidade</option>
+                        <option value="Nutricao Esportiva">Nutrição Esportiva</option>
+                        <option value="Nutricao Clínica">Nutrição Clínica</option>
+                        <option value="Nutricao Funcional">Nutrição Funcional</option>
+                        <option value="Nutricao Pediatrica">Nutrição Pediátrica</option>
+                        <option value="Nutricao Geriatrica">Nutrição Geriátrica</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn">Cadastrar</button>
+        </form>
+        <a href="../html/index.html">Já tenho uma conta</a>
+        <br>
+        <a href="../html/cadastroPaciente.html">Sou Paciente</a>
+        <br>
+    </div>
+</body>
+</html>
