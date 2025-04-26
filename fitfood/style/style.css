@@ -267,3 +267,46 @@ header h1{
     transition: 0.3s ease;
 
 }
+
+.recSenha,
+.redefinirSenha{
+    width: 400px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    border: 1px solid #ccc; 
+}
+
+.recSenhaText{
+    margin: 20px;
+    padding: 10px;
+    color: #333;
+    background-color: rgba(255, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 0, 0, 0.5);
+}
+
+#codRecSenha{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.instRedSenha{
+    margin: 20px;
+    padding: 10px;
+    color: #333;
+    background-color: rgb(230, 230, 230);
+    border-radius: 10px;
+    border: 2px solid rgba(145, 145, 145, 0.5);
+    
+}

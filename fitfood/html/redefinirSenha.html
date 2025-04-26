@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="shortcut icon" href="../img/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../bootstrap-5.3.5-dist/css/bootstrap.min.css">
+    <title>FitFood | Recupera Senha</title>
+</head>
+<body>
+    <div class="redefinirSenha">
+        <h1 class="recSenhaTitle">Redefinir Senha</h1>
+        <form action="#" method="POST">
+            <p class="">
+                Insira sua nova senha abaixo.
+                <br>
+            </p>
+            <div class="textbox">
+                <input type="password" placeholder="Nova Senha" name="novaSenha" id="novaSenha" required>
+            </div>
+            <div class="textbox">
+                <input type="password" placeholder="Redigite Nova Senha" name="redigiteSenha" id="redigiteSenha" required>
+            </div>
+            <div class="instRedSenha">
+                <p class="redSenha">
+                    <b>Sua senha deve conter</b>
+
+                    </p>
+                <ul class="redSenhaList">
+                    8 ou mais caracteres
+                    <br>
+                    1 caractere especial
+                    <br>
+                    1 número
+                </ul>
+
+            </div>
+            <button type="submit" class="btn">Redefinir Senha</button> <!-- Deve redirecionar pro login -->
+        </form>
+        <a href="../index.html">Voltar para o Login</a>
+        <br>
+        <a href="./cadastroPaciente.html">Criar conta</a>
+    </div>
+</body>
+</html>
