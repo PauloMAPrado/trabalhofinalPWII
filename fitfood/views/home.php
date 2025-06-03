@@ -27,8 +27,8 @@ $result = $conn->query($sql);
         </div>
         <nav class="navbar">
             <a href="">Home</a>
-            <a href="">Receitas</a>
-            <a href="">Sobre</a>
+            <a href="">Cronograma</a>
+            <a href="">Perfil</a>
         </nav>
     </header>
 

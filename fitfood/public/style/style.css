@@ -58,16 +58,16 @@ input[type="password"] {
     border: none;
     padding: 10px;
     font-size: 16px;
-    color: #fff;
+    color: #ffffff;
     border-radius: 5px;
     cursor: pointer;
     margin: 15px 0;
 }
 
 .btn:hover {
-    background: #4cae4c;
+    background-color: #428642;
     transition: background 0.3s ease;
-    color: rgb(224, 224, 224) !important;
+    color: rgb(255, 255, 255) !important;
 }
 
 a {
@@ -78,9 +78,10 @@ a {
 }
 
 a:hover {
-    color: #45a045;
+    color: rgb(74, 170, 74) !important;
     transition: 0.5s ease;
     scale: 1.03;
+    border-radius: 12px !important;
 }
 
 /* Cadastro */
