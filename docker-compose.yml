@@ -1,36 +1,54 @@
-version: "3.8"
+version: '3.8'
 
 services:
-  app:
+  apache:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: apache_server
+    restart: always
     ports:
-      - "8000:80"
+      - "8050:80"
     volumes:
-      - .:/var/www/html
+      - ./www:/var/www/html
     depends_on:
-      - db
+      - mysql
+    networks:
+      - network_server
 
-  db:
-    image: mysql:5.7
+  mysql:
+    image: mysql:8.0
+    hostname: mysql_docker
+    container_name: mysql_server
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 123456789
-      MYSQL_DATABASE: fitfood
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: projeto
+      MYSQL_USER: aluno
+      MYSQL_PASSWORD: 123456
     ports:
-      - "3306:3306"
+      - "3356:3356"
+    command: --port=3356
     volumes:
-      - db_data:/var/lib/mysql
+      - /mysql_data:/var/lib/mysql
+    networks:
+      - network_server
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin_server
+    restart: always
     ports:
-      - "8080:80"
+      - "8051:80"
     environment:
-      PMA_HOST: db
-      PMA_PORT: 3306
+      PMA_HOST: mysql
+      PMA_PORT: 3356
+      MYSQL_ROOT_PASSWORD: root
     depends_on:
-      - db
+      - mysql
+    networks:
+      - network_server
 
-volumes:
-  db_data:
+networks:
+  network_server:
+
