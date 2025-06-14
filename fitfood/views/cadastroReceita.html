@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/style/style.css">
+    <link rel="shortcut icon" href="../public/img/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../bootstrap-5.3.5-dist/css/bootstrap.min.css">
+    <title>FitFood | Cadastro</title>
+</head>
+
+<body id="cadastro">
+    <div class="cadastroBox">
+        <h1 class="cadastroTitle">Cadastro Receita | Nutricionista</h1>
+
+        <form action="#" method="POST">
+            <div class="row">
+                <div class="col">
+                    <div class="textbox">
+                        <input type="file" name="foto" accept="image/*" required>
+                    </div>
+                    <div class="textbox">
+                        <input type="text" placeholder="Nome da Receita" name="nome" required>
+                    </div>
+                    <div class="textbox">
+                        <input type="text" placeholder="Detalhes" name="detalhes" required>
+                    </div>
+                    <div class="textbox">
+                        <input type="text" placeholder="Ingredientes" name="ingredientes" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="textbox">
+                        <input type="text" placeholder="Categoria (Almoço, Jantar, Lanche ou Sobremesa)"
+                            name="categoria" required>
+                    </div>
+                    <div class="textbox">
+                        <input type="text" placeholder="Tempo de Preparo (minutos)" name="tempoPreparo" required>
+                    </div>
+                </div>
+            </div>
+            <div class="textbox">
+                <input type="number" placeholder="Porções" name="porcoes" required>
+            </div>
+            <div class="textbox">
+                <textarea placeholder="Passo a Passo" name="passoAPasso" class="passoAPasso"></textarea>
+            </div>
+            <div class="textbox">
+                <textarea placeholder="Observações" name="observacoes" class="observacoes"></textarea>
+            </div>
+            <button type="submit" class="btn">Cadastrar Receita</button>
+        </form>
+        <a href="../views/perfil.html">Voltar ao Perfil</a>
+        <br>
+    </div>
+</body>
+
+</html>

@@ -504,3 +504,222 @@ header img:hover {
     z-index: 1000;
     margin-top: 30px;
 }
+
+/* Estilização Página de Receitas */
+
+.containerReceita{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    margin: 50px 300px;
+    padding: 30px;
+    background: #ebebeb;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.301);
+}
+
+.listaIngredientes {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.caracteristicas {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 10px;
+    margin: 20px 0;
+    align-items: center;
+    align-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    justify-content: space-around;
+    background-color: #dadada;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    max-width: 300px;
+}
+
+#botaoCurtir:hover {
+    background-color: rgba(192, 0, 0, 0.774) !important;
+    scale: 1.03 !important;
+    transition: 0.5s ease !important;
+}
+
+#botaoCompartilhar:hover {
+    background-color: rgba(0, 83, 192, 0.774) !important;
+    scale: 1.03 !important;
+    transition: 0.5s ease !important;
+}
+
+#botaoSalvar:hover {
+    background-color: rgba(0, 119, 26, 0.774) !important;
+    scale: 1.03 !important;
+    transition: 0.5s ease !important;
+}
+
+.imgReceita {
+    margin-bottom: 20px !important;
+
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.cronograma{
+    display: flex;
+    flex-direction: column;
+    margin: 50px 300px;
+    padding: 30px;
+    background: #ebebeb;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.301);
+}
+
+.cronograma p{
+    font-size: 18px;
+    color: #333;
+    margin: 20px;
+}
+
+#verReceita{
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: auto 0px !important;
+}
+
+.cafeDaManha{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+}
+
+.contentPerfil{
+    display: flex;
+    flex-direction: column;
+    margin: 50px 300px;
+    padding: 30px;
+    background-color: #e4e4e4;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.301);
+}
+
+.perfilImg{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 20px auto !important;
+    border: 1px solid #000000 !important;
+    display: flex !important;
+}
+
+.adicionais{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-around;
+}
+
+.adicionais a{
+    display: flex;
+    max-width: 350px;
+    text-align: center;
+
+}
+
+.pacientesList{
+    display: flex;
+    flex-direction: column;
+    margin: 50px 300px;
+    padding: 30px;
+    background-color: #e4e4e4;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.301);
+}
+
+.pacientesList td{
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+#cadPaciente{
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: auto !important;
+    display: block;
+    max-width: 350px;
+    align-items: center;
+    text-align: center;
+}
+
+.cadastroPaciente{
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.cadastroPaciente form {
+    width: 100%;
+    max-width: 500px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.passoAPasso {
+    display: flex;
+    margin: 30px auto;
+    padding: 10px;
+    background-color: #e4e4e4;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.301);
+    width: 90%;
+    height: 100px;
+}
+
+.observacoes {
+    display: flex;
+    margin: 30px auto;
+    padding: 10px;
+    background-color: #e4e4e4;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.301);
+    width: 90%;
+    height: 100px;
+}
+
