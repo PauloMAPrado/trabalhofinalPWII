@@ -33,7 +33,7 @@ class Pacientes{
             'pacientes_dt_nasc' => '',
             'pacientes_altura' => '',
             'pacientes_peso' => '',
-            'usaruios_imc' => '',
+            'pacientes_imc' => '',
             'pacientes_email' => '',
             'pacientes_senha' => '',
         ];
