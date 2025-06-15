@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/style/style.css">
+    <link rel="shortcut icon" href="../public/img/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./bootstrap-5.3.5-dist/css/bootstrap.min.css">
+    <title>FitFood | Login</title>
+</head>
+<body>
+    <div class="loginBox">
+        <h1 class="loginTitle">FitFood | Cadastro</h1>
+        <!-- Formulário de cadastro contendo campos de texto como Nome, Email, Senha. Opções de escolha entre nutricionista ou pacientedd d-->
+        <form action="../views/home.html" method="POST">
+            <div class="textbox">
+                <input type="text" placeholder="Nome Completo" name="name" required>
+                <input type="email" placeholder="Email" name="email" required>
+                <input type="password" placeholder="Senha" name="password" required>
+                <br>
+                <br>
+                <hr>
+                <br> 
+                <label for="userType">Tipo de Usuário:</label>
+                <select name="userType" id="userType" required>
+                    <option value="nutricionista">Nutricionista</option>
+                    <option value="paciente">Paciente</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Cadastrar</button>
+            <a href="../index.html">Já tenho uma conta</a>
+    </div>
+</body>
+</html>
