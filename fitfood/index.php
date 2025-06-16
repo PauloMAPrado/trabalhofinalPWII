@@ -1,91 +1,66 @@
 <?php
+// fitfood/index.php
 
+// Inicia a sessão para todas as requisições
 session_start();
 
-require_once(__DIR__ . "/../fitfood/Models/Database.php"); 
+// Carrega o arquivo de funções de ajuda
+require_once 'Config/Helpers.php';
 
-use Models\Database;
+// AUTOLOADER: Carrega as classes automaticamente quando são necessárias
+spl_autoload_register(function ($class_name) {
+    // Converte o namespace\classe para um caminho de arquivo (ex: Controllers\NutricionistaController -> Controllers/NutricionistaController.php)
+    $file = str_replace('\\', '/', $class_name) . '.php';
+    if (file_exists($file)) {
+        require_once $file;
+    }
+});
 
-$mensagem_erro = '';
+// Carrega o array de rotas do nosso mapa
+$routes = require_once 'Routes.php';
 
-if (isset($_GET['erro']) && $_GET['erro'] == 1) {
-    $mensagem_erro = "Email ou senha incorretos. Tente novamente.";
-}
+// Pega a URL "amigável" da requisição. Ex: /pacientes/editar/15
+$request_uri = '/' . ($_GET['url'] ?? '');
+// Pega o método da requisição (GET ou POST)
+$request_method = $_SERVER['REQUEST_METHOD'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-    $email = $_POST['email'] ?? null;
-    $senha = $_POST['senha'] ?? null;
+$matched_route = null;
+$params = [];
 
-    if (empty($email) || empty($senha)) {
-        $mensagem_erro = "Por favor, preencha todos os campos.";
-    } else {
-        $db_nutri = new Database('nutricionistas');
-        $nutricionista = $db_nutri->select('email = :email', [':email' => $email])->fetch(PDO::FETCH_OBJ);
+// Procura a rota no array de rotas do método correspondente (GET ou POST)
+if (isset($routes[$request_method])) {
+    foreach ($routes[$request_method] as $route => $handler) {
+        // Converte a rota em um padrão de Expressão Regular para lidar com parâmetros como {id}
+        $pattern = preg_replace('/\{([a-zA-Z0-9_]+)\}/', '([a-zA-Z0-9_]+)', $route);
+        $pattern = '#^' . $pattern . '$#';
 
-        if ($nutricionista && password_verify($senha, $nutricionista->senha)) {
-            // LOGIN BEM-SUCEDIDO COMO NUTRICIONISTA
-            $_SESSION['nutri_id'] = $nutricionista->id;
-            $_SESSION['user_nome'] = $nutricionista->nome;
-            $_SESSION['user_tipo'] = 'nutricionista';
-            
-            // Redireciona para o painel do nutricionista
-            header("Location: /fitfood/views/perfil.php"); 
-            exit();
+        if (preg_match($pattern, $request_uri, $matches)) {
+            array_shift($matches);
+            $params = $matches;
+            $matched_route = $handler;
+            break;
         }
-
-        // Se não era um nutricionista, tenta encontrar na tabela de pacientes
-        $pacientes = new Database('pacientes');
-        $pacientes = $pacientes->select('email = :email', [':email' => $email])->fetch(PDO::FETCH_OBJ);
-        
-        // Verifica se encontrou um paciente e se a senha está correta
-        if ($paciente && password_verify($senha, $paciente->senha)) {
-            // LOGIN BEM-SUCEDIDO COMO PACIENTE
-            $_SESSION['paciente_id'] = $pacientes->id;
-            $_SESSION['user_nome'] = $pacientes->nome;
-            $_SESSION['user_tipo'] = 'paciente';
-            
-            // Redireciona para o painel do paciente
-            header("Location: /fitfood/views/cronograma.php"); 
-            exit();
-        }
-
-    
-        header("Location: login.php?erro=1");
-        exit();
     }
 }
-?>
-<!DOCTYPE html>
-<html lang="pt_BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitFood | Login</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../fitfood/public/style/style.css">
-    <link rel="shortcut icon" href="../fitfood/public/img/logo.jpg" type="image/x-icon">
-</head>
-<body class="d-flex align-items-center justify-content-center vh-100">
-    <div class="loginBox">
-        <h1 class="loginTitle">FitFood | Login</h1>
 
-        <?php if (!empty($mensagem_erro)): ?>
-            <div class="alert alert-danger">
-                <?= htmlspecialchars($mensagem_erro) ?>
-            </div>
-        <?php endif; ?>
+// Se encontrou uma rota correspondente, chama o controller
+if ($matched_route) {
+    $controllerName = 'Controllers\\' . $matched_route[0];
+    $methodName = $matched_route[1];
 
-        <form action="login.php" method="POST">
-            <div class="textbox">
-                <input type="email" class="form-control" placeholder="Email" name="email" required>
-            </div>
-            <div class="textbox">
-                <input type="password" class="form-control" placeholder="Senha" name="senha" required>
-            </div>
-            <button type="submit" class="btn">Entrar</button>
-        </form>
-        <a href="../fitfood/views/cadastro.php">Criar conta</a>
-    </div>
-</body>
-</html>
+    if (class_exists($controllerName)) {
+        $controller = new $controllerName();
+        if (method_exists($controller, $methodName)) {
+            // Chama o método, passando os parâmetros da URL (como o ID)
+            call_user_func_array([$controller, $methodName], $params);
+        } else {
+            echo "Erro 404: Método '{$methodName}' não encontrado.";
+        }
+    } else {
+        echo "Erro 404: Controller '{$controllerName}' não encontrado.";
+    }
+} else {
+    // Se não encontrou nenhuma rota, exibe a página 404
+    http_response_code(404);
+    view('erros/404'); // Cria um arquivo em Views/erros/404.php
+}
