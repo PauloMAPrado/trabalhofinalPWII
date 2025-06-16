@@ -69,7 +69,7 @@
             <button type="submit" class="btn">Cadastrar</button>
         </form>
         <br>
-        <a href="../index.html">Já tenho uma conta</a>
+        <a href="../index.php">Já tenho uma conta</a>
     </div>
 
 <script>

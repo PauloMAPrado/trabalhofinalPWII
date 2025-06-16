@@ -18,10 +18,10 @@
             <img src="../public/img/logo.jpg" alt="Logo FitFood">
         </div>
         <nav class="navbar">
-            <a href="../views/home.html">Home</a>
-            <a href="../views/cronograma.html">Cronograma</a>
-            <a href="../views/perfil.html">Perfil</a>
-            <a href="../views/cadUser.html">Cadastrar Usuário</a>
+            <a href="../views/home.php">Home</a>
+            <a href="../views/cronograma.php">Cronograma</a>
+            <a href="../views/perfil.php">Perfil</a>
+            <a href="../views/cadUser.php">Cadastrar Usuário</a>
         </nav>
     </header>
 
@@ -57,7 +57,7 @@
     </div>
 
     <div class="cadastroPaciente">
-        <a href="../views/pacientes.html" class="btn btn-secondary" id="cadPaciente">Cadastrar Paciente</a>
+        <a href="../views/cadUser.php" class="btn btn-secondary" id="cadPaciente">Cadastrar Paciente</a>
     </div>
 
 </body>

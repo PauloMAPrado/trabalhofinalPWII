@@ -36,7 +36,7 @@
                 Café da Manhã
                 </p>
                 <!-- botáo de op;oes que redireciona pra pagina home -->
-                <a href="../views/home.html" class="btn btn-primary" id="verReceita">Ver Receitas</a>
+                <a href="../views/home.php" class="btn btn-primary" id="verReceita">Ver Receitas</a>
             </div>
             <hr>
             <div class="cafeDaManha">
@@ -44,7 +44,7 @@
                 Colação
                 </p>
                 <!-- botáo de op;oes que redireciona pra pagina home -->
-                <a href="../views/home.html" class="btn btn-primary" id="verReceita">Ver Receitas</a>
+                <a href="../views/home.php" class="btn btn-primary" id="verReceita">Ver Receitas</a>
             </div>
             <hr>
             <div class="cafeDaManha">

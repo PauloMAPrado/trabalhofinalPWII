@@ -18,10 +18,10 @@
             <img src="../public/img/logo.jpg" alt="Logo FitFood">
         </div>
         <nav class="navbar">
-            <a href="../views/home.html">Home</a>
-            <a href="../views/cronograma.html">Cronograma</a>
-            <a href="../views/perfil.html">Perfil</a>
-            <a href="../views/cadUser.html">Cadastrar Usuário</a>
+            <a href="../views/home.php">Home</a>
+            <a href="../views/cronograma.php">Cronograma</a>
+            <a href="../views/perfil.php">Perfil</a>
+            <a href="../views/cadUser.php">Cadastrar Usuário</a>
         </nav>
     </header>
 
@@ -53,11 +53,11 @@
                 </form>
 
                 <div class="adicionais">
-                    <a href="../views/receitasFavoritas.html" class="btn btn-secondary">Receitas Favoritas</a>
-                    <a href="../views/cadastroReceita.html" class="btn btn-secondary">Cadastrar Receita</a>
-                    <a href="../views/listaPacientes.html" class="btn btn-secondary">Lista de Pacientes</a>
+                    <a href="../views/receitasFavoritas.php" class="btn btn-secondary">Receitas Favoritas</a>
+                    <a href="../views/cadastroReceita.php" class="btn btn-secondary">Cadastrar Receita</a>
+                    <a href="../views/listaPacientes.php" class="btn btn-secondary">Lista de Pacientes</a>
                     <!-- Botão da Lista de Pacientes com display="none"
-                     <a href="../views/listaPacientes.html" class="btn btn-secondary" style="display: none;">Lista de Pacientes</a>
+                     <a href="../views/listaPacientes.php" class="btn btn-secondary" style="display: none;">Lista de Pacientes</a>
                     -->
                 </div>
             </div>

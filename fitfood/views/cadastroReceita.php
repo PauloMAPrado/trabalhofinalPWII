@@ -51,7 +51,7 @@
             </div>
             <button type="submit" class="btn">Cadastrar Receita</button>
         </form>
-        <a href="../views/perfil.html">Voltar ao Perfil</a>
+        <a href="../views/perfil.php">Voltar ao Perfil</a>
         <br>
     </div>
 </body>

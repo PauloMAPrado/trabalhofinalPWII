@@ -50,29 +50,23 @@ $result = $conn->query($sql);
                     // --- Início do Card Dinâmico ---
                     echo '<div class="card">';
                     echo '    <div class="card-body">';
-                    
-                    // Imagem da Receita (Usa imagem padrão se não houver)
-                    // ATENÇÃO: Verifique o caminho da imagem padrão
+               
+                 
                     $imagem = !empty($row["imagem_url"]) ? $row["imagem_url"] : '../public/img/default_recipe.jpg';
                     echo '        <img src="' . htmlspecialchars($imagem) . '" alt="' . htmlspecialchars($row["titulo"]) . '" class="card-img">';
                     
                     echo '        <div class="text">';
-                    // Título da Receita
                     echo '            <h5 class="card-title">' . htmlspecialchars($row["titulo"]) . '</h5>';
-                    // Descrição da Receita (pode limitar o tamanho se quiser)
                     echo '            <p class="card-text">' . htmlspecialchars($row["descricao"]) . '</p>';
                     echo '        </div>';
                     
-                    // Botão Ver Receita (Link para pagina_receita.php com o ID)
                     echo '        <a href="pagina_receita.php?id=' . $row["id"] . '" class="btn btn-primary">Ver Receita</a>';
                     
-                    // Botão Curtir (Sem ID, com data-id para JavaScript)
                     echo '        <button class="btn btn-secondary like-button" data-id="' . $row["id"] . '">';
                     echo '        </button>';
                     
                     echo '    </div>';
                     echo '</div>';
-                    // --- Fim do Card Dinâmico ---
                 }
             } else {
                 // Mensagem se não houver receitas
@@ -94,7 +88,6 @@ $result = $conn->query($sql);
             button.addEventListener('click', function() {
                 const receitaId = this.getAttribute('data-id');
                 console.log('Clicou em curtir na receita ID: ' + receitaId);
-                // Implemente a lógica AJAX aqui para curtir sem recarregar
             });
         });
     </script>
