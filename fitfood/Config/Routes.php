@@ -17,6 +17,7 @@ return [
         '/pacientes'               => ['Paciente', 'index'],
         '/pacientes/novo'          => ['Paciente', 'showForm'],
         '/pacientes/editar/{id}'   => ['Paciente', 'edit'],
+        '/receitas/novo' => ['Receita', 'showForm'],
     ],
 
     // POST: Processa o envio de formulários (salvar, atualizar, etc.)
@@ -27,5 +28,9 @@ return [
         '/pacientes/salvar'        => ['Paciente', 'save'],
         '/pacientes/editar/save'   => ['Paciente', 'update'],
         '/pacientes/deletar'       => ['Paciente', 'delete'], 
-    ]
+        '/receitas/salvar' => ['Receita', 'save'],
+    ],
+
+
+
 ];
