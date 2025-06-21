@@ -1,16 +1,18 @@
-<?php
+   <?php
 
-$servername = "localhost"; // OU 127.0.0.1
-$username = "root";
-$password = "123456789";
-$dbname = "fitfood";
+   $servername = "localhost"; // OU 127.0.0.1
+   $username = "aluno"; // Verifique se este usuário tem acesso ao banco de dados
+   $password = "123456"; // Verifique se a senha está correta
+   $dbname = "fitfood"; // Nome do banco de dados
 
-// Criar a conexão
-$conn = new mysqli($servername, $username, $password, $dbname);
+   try {
+       $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+       // Configurar o modo de erro do PDO para exceções
+       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+   } catch (PDOException $e) {
+       die("Falha na conexão: " . $e->getMessage());
+   }
 
-if ($conn->connect_error) {
-  die("Falha na conexão: " . $conn->connect_error);
-}
-
-$conn->set_charset("utf8");
-?>
+   // Opcional: Retornar a conexão para uso posterior
+   return $conn;
+   

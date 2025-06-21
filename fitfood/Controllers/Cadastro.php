@@ -1,42 +1,33 @@
 <?php
-session_start();
+namespace Controllers;
 
-require_once("Controllers/Nutricionista.php");
-require_once("Controllers/Paciente.php");
-
+require_once("Config/Helpers.php");
 use Controllers\Nutricionista;
 use Controllers\Paciente;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $userType = $_POST['userType'] ?? null;
-
-    // Decide qual controller instanciar e qual método chamar
-    switch ($userType) {
-        case 'nutricionista':
-            // Cria uma instância do controller de Nutricionista
-            $nutricionistaController = new Nutricionista();
-            // Chama o método save() para cadastrar o nutricionista
-            $nutricionistaController->save();
-            break;
-
-        case 'paciente':
-            if (!isset($_SESSION['nutri_id'])) {
-                header("Location: login.php?erro=autenticacao");
-                exit;
-            }
-
-            // Cria uma instância do controller de Paciente
-            $pacienteController = new Paciente();
-            // Chama o método save() para cadastrar o paciente
-            $pacienteController->save();
-            break;
-
-        default:
-            header("Location: pagina_de_cadastro.php?erro=tipo_invalido");
-            exit;
+class Cadastro {
+    public function showForm() {
+        return view('cadUser ');
     }
-} else {
-    header("Location: pagina_de_cadastro.php");
-    exit;
+
+    public function save() {
+        $userType = $_POST['userType'] ?? null;
+        switch ($userType) {
+            case 'nutricionista':
+                $nutricionistaController = new Nutricionista();
+                $nutricionistaController->save();
+                break;
+            case 'paciente':
+                if (!isset($_SESSION['nutri_id'])) {
+                    header("Location: " . base_url('login') . "?erro=autenticacao");
+                    exit;
+                }
+                $pacienteController = new Paciente();
+                $pacienteController->save();
+                break;
+            default:
+                header("Location: " . base_url('cadastro') . "?erro=tipo_invalido");
+                exit;
+        }
+    }
 }
