@@ -1,0 +1,20 @@
+Alunos: Paulo Martins Alves do Prado e Sara Luiz de Farias
+
+Passo a Passo para uso do sistema
+
+1º Passo: Instalação dos Containers
+
+Ao clonar o repositório, na pasta raiz do mesmo, utilize o comando "docker-compose up -d"
+Isso iniciará os containers necessários para o funcionamento do sistema
+
+2º Passo: Instalação do Banco de Dados
+
+Ao iniciar os containers necessários, vá até seu navegador e digite "localhost:8050/install"
+Este comando instalará o banco de dados do sistema em seu computador
+
+3º Passo: Redirecionamento para Login
+
+Ao instalar o banco de dados, o próprio sistema irá fornecer a opção para acesso à página de login inicial
+Cadastre seu próprio usuário e explore o sistema a vontade
+
+OBS: Caso o sistema não te redirecione ao clicar na opção, o link para a tela inicial é "localhost:8050/login_simples.php"
