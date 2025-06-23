@@ -1,87 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/style/style.css">
-    <link rel="shortcut icon" href="../public/img/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="../bootstrap-5.3.5-dist/css/bootstrap.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('public/style/style.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('public/bootstrap-5.3.5-dist/css/bootstrap.min.css') ?>">
     <title>FitFood | Cronograma</title>
 </head>
 <body>
-    
     <header class="header">
         <div class="logo">
-            <img src="../public/img/logo.jpg" alt="Logo FitFood">
+            <img src="<?= base_url('public/img/logo.jpg') ?>" alt="Logo FitFood">
         </div>
         <nav class="navbar">
-            <a href="../views/home.php">Home</a>
-            <a href="../views/cronograma.php">Cronograma</a>
-            <a href="../views/perfil.php">Perfil</a>
-            <a href="../views/cadUser.php">Cadastrar Usuário</a>
+            <a href="<?= base_url('/') ?>">Home</a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="<?= base_url('logout') ?>">Sair</a>
+            <?php else: ?>
+                <a href="<?= base_url('login') ?>">Login</a>
+            <?php endif; ?>
         </nav>
     </header>
 
-    <div class="title">
-        <h3 class="title">Cronograma</h3>
-    </div>
-
-    <div class="content">
-        <div class="cronograma">
-            <div class="cafeDaManha">
-                <p class="refeicoes">
-                Café da Manhã
-                </p>
-                <!-- botáo de op;oes que redireciona pra pagina home -->
-                <a href="../views/home.php" class="btn btn-primary" id="verReceita">Ver Receitas</a>
+    <div class="container mt-4">
+        <h3>Cronograma de Refeições</h3>
+        
+        <div class="row mt-4">
+            <?php 
+            $refeicoes = ['Café da Manhã', 'Colação', 'Almoço', 'Lanche', 'Jantar', 'Ceia'];
+            foreach($refeicoes as $refeicao): 
+            ?>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $refeicao ?></h5>
+                        <a href="<?= base_url('/') ?>" class="btn" style="background-color: #5cb85c; color: white; border: none;">Ver Receitas</a>
+                    </div>
+                </div>
             </div>
-            <hr>
-            <div class="cafeDaManha">
-                <p class="refeicoes">
-                Colação
-                </p>
-                <!-- botáo de op;oes que redireciona pra pagina home -->
-                <a href="../views/home.php" class="btn btn-primary" id="verReceita">Ver Receitas</a>
-            </div>
-            <hr>
-            <div class="cafeDaManha">
-                <p class="refeicoes">
-                Almoiço
-                </p>
-                <!-- botáo de op;oes que redireciona pra pagina home -->
-                <a href="../views/home.php" class="btn btn-primary" id="verReceita">Ver Receitas</a>
-            </div>
-            <hr>
-            <div class="cafeDaManha">
-                <p class="refeicoes">
-                Lanche da Tarde
-                </p>
-                <!-- botáo de op;oes que redireciona pra pagina home -->
-                <a href="../views/home.php" class="btn btn-primary" id="verReceita">Ver Receitas</a>
-            </div>
-            <hr>
-            <div class="cafeDaManha">
-                <p class="refeicoes">
-                Jantar
-                </p>
-                <!-- botáo de op;oes que redireciona pra pagina home -->
-                <a href="../views/home.php" class="btn btn-primary" id="verReceita">Ver Receitas</a>
-            </div>
-            <hr>
-            <div class="cafeDaManha">
-                <p class="refeicoes">
-                Ceia
-                </p>
-                <!-- botáo de op;oes que redireciona pra pagina home -->
-                <a href="../views/home.php" class="btn btn-primary" id="verReceita">Ver Receitas</a>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer mt-5">
         <p>&copy; 2025 FitFood. Todos os direitos reservados.</p>
     </footer>
 </body>

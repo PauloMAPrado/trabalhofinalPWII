@@ -1,50 +1,37 @@
 <?php
 
-// Apelido do arquivo (Alias)
 namespace Models;
 
-// Faz a chamada da classe PDO
 use \PDO;
 use \PDOException;
 
 class Database {
 
-    # Host de conexão com o banco de dados
-    const HOST = 'mysql'; // ou 'localhost' na maioria dos ambientes de desenvolvimento
+    const HOST = 'mysql'; 
     
-    # Nome do banco de dados
-    const NAME = 'fitfood'; // O nome correto do seu banco
+    const NAME = 'fitfood'; 
 
-    # Usuário do banco
-    const USER = 'aluno'; // Seu usuário
+    const USER = 'aluno'; 
 
-    # Senha de acesso ao banco de dados
-    const PASS = '123456'; // Sua senha
+    const PASS = '123456'; 
 
-    # Porta
     const PORT = '3306';
 
-    # Nome da tabela a ser manipulada
     private $table;
 
-    # Instância de conexão com o banco de dados
     private $connection;
 
-    # Define a tabela e instancia a conexão
     public function __construct($table = null){
         $this->table = $table;
         $this->setConnection();
     }
 
-    # Método responsável por criar uma conexão com o banco de dados
     private function setConnection(){
         try {
-            // CORREÇÃO: Usando as constantes da classe para criar a conexão
             $dsn = 'mysql:host=' . self::HOST . ';port=' . self::PORT . ';dbname=' . self::NAME . ';charset=utf8';
             $this->connection = new PDO($dsn, self::USER, self::PASS);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            // Em produção, evite expor detalhes do erro. Grave em um log.
             die('ERRO DE CONEXÃO: ' . $e->getMessage());
         }
     }
@@ -76,7 +63,6 @@ class Database {
         $orderClause = !empty($order) ? 'ORDER BY ' . $order : '';
         $limitClause = !empty($limit) ? 'LIMIT ' . $limit : '';
 
-        // Monta a query
         $query = 'SELECT '.$fields.' FROM `'.$this->table.'` '.$whereClause.' '.$orderClause.' '.$limitClause;
         
         return $this->execute($query, $params);
@@ -89,7 +75,6 @@ class Database {
 
         $query = 'UPDATE `'.$this->table.'` SET '.$fieldsForQuery.' WHERE '.$where;
         
-        // Combina os valores do SET e do WHERE para o execute
         $all_params = array_merge(array_values($values), $paramsWhere);
         $statement = $this->execute($query, $all_params);
 

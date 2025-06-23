@@ -12,7 +12,6 @@ class Auth {
     private $data;
 
     function __construct() {
-        $this->usuarios = new Conexao('usuarios');
     }
 
     protected function redirect($path, $message = null) {
@@ -23,41 +22,54 @@ class Auth {
         exit;
     }
 
-    function index() {
+    function showLogin() {
         $this->data['pagina'] = 'Login';
-        return view('login/index', $this->data);
+        return view('login', $this->data);
     }
 
-    function auth() {
-        $requests = $_REQUEST;
-        $login = $requests['login'];
-        $senha = md5($requests['senha']);
-        $where = "usuarios_cpf = '{$login}' OR usuarios_email = '{$login}' AND usuarios_senha = '{$senha}'";
-        $usuario = $this->usuarios->select(null, $where)->fetchObject();
+    function authenticate() {
+        $email = $_POST['email'] ?? '';
+        $senha = $_POST['senha'] ?? '';
 
-        if ($usuario) {
-            if ($usuario->usuarios_nivel == 2) {
-                $_SESSION['usuario_logado'] = $usuario;
-                $msg = ['texto' => 'Login realizado com sucesso!', 'color' => 'success'];
-                $this->redirect(base_url('admin'), $msg);
-            } else if ($usuario->usuarios_nivel == 1) {
-                $_SESSION['usuario_logado'] = $usuario;
-                $msg = ['texto' => 'Login realizado com sucesso!', 'color' => 'success'];
-                $this->redirect(base_url('user'), $msg);
-            } else {
-                $msg = ['texto' => 'Acesso não autorizado!', 'color' => 'danger'];
-                $this->redirect(base_url('login/index'), $msg);
-            }
-        } else {
-            $msg = ['texto' => 'Usuário ou senha inválido!', 'color' => 'danger'];
-            $this->redirect(base_url('login'), $msg);
+        if (empty($email) || empty($senha)) {
+            $_SESSION['msg'] = ['texto' => 'Preencha todos os campos!', 'color' => 'danger'];
+            header('Location: ' . base_url('login'));
+            exit;
         }
+
+        // Tenta login como nutricionista
+        $nutricionistas = new Conexao('nutricionistas');
+        $nutri = $nutricionistas->select('email = ?', [$email])->fetch(\PDO::FETCH_OBJ);
+        
+        if ($nutri && password_verify($senha, $nutri->senha)) {
+            $_SESSION['user_id'] = $nutri->id;
+            $_SESSION['user_nome'] = $nutri->nome;
+            $_SESSION['user_tipo'] = 'nutricionista';
+            header('Location: ' . base_url('nutricionista/dashboard'));
+            exit;
+            
+        }
+
+        // Tenta login como paciente (email + chave de acesso)
+        $pacientes = new Conexao('pacientes');
+        $paciente = $pacientes->select('email = ? AND chave_acesso = ?', [$email, $senha])->fetch(\PDO::FETCH_OBJ);
+        
+        if ($paciente) {
+            $_SESSION['user_id'] = $paciente->id;
+            $_SESSION['user_nome'] = $paciente->nome;
+            $_SESSION['user_tipo'] = 'paciente';
+            header('Location: ' . base_url('/'));
+            exit;
+        }
+
+        $_SESSION['msg'] = ['texto' => 'Email ou chave incorretos!', 'color' => 'danger'];
+        header('Location: ' . base_url('login'));
+        exit;
     }
 
     function logout() {
-        unset($_SESSION['usuario_logado']);
         session_destroy();
-        $msg = ['texto' => 'Sessão encerrada com sucesso!', 'color' => 'success'];
-        $this->redirect(base_url('home'), $msg);
+        header('Location: ' . base_url('/'));
+        exit;
     }
 }

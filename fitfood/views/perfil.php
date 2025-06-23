@@ -1,70 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/style/style.css">
-    <link rel="shortcut icon" href="../public/img/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="../bootstrap-5.3.5-dist/css/bootstrap.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-    <title>FitFood | Perfil</title>
-</head>
-<body>
-    
-    <header class="header">
-        <div class="logo">
-            <img src="../public/img/logo.jpg" alt="Logo FitFood">
-        </div>
-        <nav class="navbar">
-            <a href="../views/home.php">Home</a>
-            <a href="../views/cronograma.php">Cronograma</a>
-            <a href="../views/perfil.php">Perfil</a>
-            <a href="../views/cadUser.php">Cadastrar Usuário</a>
-        </nav>
-    </header>
+<?php
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ' . base_url('login'));
+    exit;
+}
 
-    <div class="contentPerfil">
-        <h1 class="title">Meu Perfil</h1>
-        <div class="perfilInfo">
-            <img src="../public/img/userr.png" alt="Foto de Perfil" class="perfilImg">
-            <div class="perfilDetails">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col">
-                                <label for="nome">Nome:</label>
-                                <input type="text" id="nome" name="nome" class="form-control" required>
-                                <label for="crn">CRN:</label>
-                                <input type="number" id="crn" name="crn" class="form-control" required>
-                                <label for="fone">Telefone:</label>
-                                <input type="number" id="fone" name="fone" class="form-control" required>
-                            </div>
-                            <div class="col">
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" class="form-control" required>
-                                <label for="endereco">Endereço:</label>
-                                <input type="text" id="endereco" name="endereco" class="form-control" required>
-                                <button type="submit" class="btn">Alterar dados</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-                <div class="adicionais">
-                    <a href="../views/receitasFavoritas.php" class="btn btn-secondary">Receitas Favoritas</a>
-                    <a href="../views/cadastroReceita.php" class="btn btn-secondary">Cadastrar Receita</a>
-                    <a href="../views/listaPacientes.php" class="btn btn-secondary">Lista de Pacientes</a>
-                    <!-- Botão da Lista de Pacientes com display="none"
-                     <a href="../views/listaPacientes.php" class="btn btn-secondary" style="display: none;">Lista de Pacientes</a>
-                    -->
-                </div>
-            </div>
-
-    </div>
-
-
-
-</body>
-</html>
+if ($_SESSION['user_tipo'] === 'nutricionista') {
+    header('Location: ' . base_url('nutricionista/dashboard'));
+} else {
+    header('Location: ' . base_url('/'));
+}
+exit;
+?>

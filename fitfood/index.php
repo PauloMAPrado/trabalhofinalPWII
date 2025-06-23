@@ -45,10 +45,13 @@ if ($matched_route) {
         echo "Erro 404: Controller '{$controllerName}' não encontrado.";
     }
 } else {
-    http_response_code(404);
-    if (function_exists('view')) {
-        view('erros/404');
-    } else {
-        echo "Erro: A função 'view' não está definida.";
+    // Debug: mostrar qual rota foi tentada
+    if ($request_uri === '/') {
+        // Redireciona para login se não há rota raiz
+        header('Location: /login');
+        exit;
     }
+    
+    http_response_code(404);
+    echo "Rota não encontrada: {$request_uri}";
 }

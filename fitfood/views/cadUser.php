@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/style/style.css">
-    <link rel="shortcut icon" href="../public/img/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="./bootstrap-5.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url('public/style/style.css') ?>">
+    <link rel="shortcut icon" href="<?= base_url('public/img/logo.jpg') ?>" type="image/x-icon">
+    <link rel="stylesheet" href="<?= base_url('public/bootstrap-5.3.5-dist/css/bootstrap.min.css') ?>">
     <title>FitFood | Cadastro</title>
 </head>
 <body>
     <div class="loginBox">
         <h1 class="loginTitle">FitFood | Cadastro</h1>
         
-        <form action="Cadastro.php" method="POST">
+        <form action="<?= base_url('cadastro/save') ?>" method="POST">
             
             <div class="textbox">
                 <label for="userType">Tipo de Usuário:</label>
@@ -69,7 +69,7 @@
             <button type="submit" class="btn">Cadastrar</button>
         </form>
         <br>
-        <a href="../index.php">Já tenho uma conta</a>
+        <a href="<?= base_url('login') ?>">Já tenho uma conta</a>
     </div>
 
 <script>

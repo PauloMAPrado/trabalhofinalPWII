@@ -30,13 +30,13 @@ function accessNavigate($tipoUsuario = 'visitante')
  */
 function view($viewName, $data = [])
 {
-    $viewPath = __DIR__ . "/../Views/{$viewName}.php";
+    $viewPath = __DIR__ . "/../views/{$viewName}.php";
 
     if (file_exists($viewPath)) {
         extract($data);
         include $viewPath;
     } else {
-        echo "Erro: View '{$viewName}' não encontrada!";
+        echo "Erro: View '{$viewName}' não encontrada em: {$viewPath}";
     }
 }
 
@@ -48,12 +48,7 @@ function view($viewName, $data = [])
  * @return string A URL completa.
  */
 function base_url($path = '') {
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
-    $host = $_SERVER['HTTP_HOST'];
-    $scriptName = dirname($_SERVER['SCRIPT_NAME']);
-    $url = rtrim($protocol . "://" . $host . $scriptName, '/');
-
-    return $url . '/' . ltrim($path, '/');
+    return '/' . ltrim($path, '/');
 }
 
 /**

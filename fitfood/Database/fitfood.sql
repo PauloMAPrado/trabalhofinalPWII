@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
   `nutricionista_id` INT NOT NULL,
   `nome` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL UNIQUE,
-  `senha` VARCHAR(255) NOT NULL,
+  `chave_acesso` VARCHAR(10) NOT NULL,
   `data_nascimento` DATE NULL,
   `data_criacao` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -210,5 +210,27 @@ INSERT INTO `refeicao_alimentos` (`refeicao_id`, `alimento_id`, `quantidade_gram
 (5, 11, 125), (5, 12, 150), (5, 13, 100),
 -- Ceia (ID 6)
 (6, 3, 200), (6, 14, 200);
+
+-- -----------------------------------------------------
+-- Tabela `paciente_receitas` (Receitas específicas para pacientes)
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `paciente_receitas` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `paciente_id` INT NOT NULL,
+  `refeicao_id` INT NOT NULL,
+  `data_atribuicao` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `observacoes` TEXT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_paciente_receitas_pacientes_idx` (`paciente_id` ASC),
+  INDEX `fk_paciente_receitas_refeicoes_idx` (`refeicao_id` ASC),
+  CONSTRAINT `fk_paciente_receitas_pacientes`
+    FOREIGN KEY (`paciente_id`)
+    REFERENCES `pacientes` (`id`)
+    ON DELETE CASCADE,
+  CONSTRAINT `fk_paciente_receitas_refeicoes`
+    FOREIGN KEY (`refeicao_id`)
+    REFERENCES `refeicoes` (`id`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB;
 
 -- FIM DO SCRIPT
