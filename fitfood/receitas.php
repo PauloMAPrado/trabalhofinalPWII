@@ -96,6 +96,13 @@ $minhasReceitas = $refeicoes->select('nutricionista_criador_id = ?', [$_SESSION[
             <div class="alert alert-success"><?= $sucesso ?></div>
         <?php endif; ?>
         
+        <?php if (isset($_GET['msg'])): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?= htmlspecialchars($_GET['msg']) ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        <?php endif; ?>
+        
         <div class="row">
             <div class="col-md-8">
                 <h3>Criar Receita</h3>
@@ -166,7 +173,12 @@ $minhasReceitas = $refeicoes->select('nutricionista_criador_id = ?', [$_SESSION[
                                 <span><?= htmlspecialchars($receita->nome) ?></span>
                                 <div>
                                     <a href="ver_receita.php?id=<?= $receita->id ?>" class="btn btn-sm btn-info">Ver</a>
+                                    <a href="editar_receita.php?id=<?= $receita->id ?>" class="btn btn-sm btn-warning">Editar</a>
                                     <a href="atribuir_receita.php?receita=<?= $receita->id ?>" class="btn btn-sm" style="background-color: #28a745; color: white;">Atribuir</a>
+                                    <form method="POST" action="excluir_receita.php" class="d-inline">
+                                        <input type="hidden" name="id" value="<?= $receita->id ?>">
+                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Confirma exclusão?')">Excluir</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
